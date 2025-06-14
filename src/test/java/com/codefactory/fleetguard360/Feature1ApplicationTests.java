@@ -8,6 +8,7 @@ class Feature1ApplicationTests {
 
 	@Test
 	void contextLoads() {
+	    // Este método se deja vacío siendo su propósito verificar que el ApplicationContext se carga correctamente.
 	}
 
 }
