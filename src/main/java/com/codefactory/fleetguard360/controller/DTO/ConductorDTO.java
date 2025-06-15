@@ -13,11 +13,16 @@ public class ConductorDTO {
     private String password;
 
     public void setEmail(String email) {
-        // Validación simple de email
-        if (email != null && Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email)) {
+        // Usamos un método separado para la validación
+        if (isValidEmail(email)) {
             this.email = email;
         } else {
             throw new IllegalArgumentException("Email inválido");
         }
+    }
+
+    // Método separado para la validación del email
+    private boolean isValidEmail(String email) {
+        return email != null && Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email);
     }
 }
