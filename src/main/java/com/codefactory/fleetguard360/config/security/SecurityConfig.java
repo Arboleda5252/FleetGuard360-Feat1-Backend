@@ -2,6 +2,8 @@ package com.codefactory.fleetguard360.config.security;
 
 import com.codefactory.fleetguard360.config.jwt.JwtAuthFilter;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,14 +20,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
+    // Logger para esta clase
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+
     @PostConstruct
     public void init() {
-        System.out.println("SecurityConfig cargada");
+        // Usamos el logger en lugar de System.out.println
+        logger.info("SecurityConfig cargada");
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception {
-        System.out.println("Construyendo filterChain");
+        // Usamos el logger en lugar de System.out.println
+        logger.info("Construyendo filterChain");
+
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
