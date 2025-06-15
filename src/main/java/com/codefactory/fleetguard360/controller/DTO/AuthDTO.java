@@ -1,4 +1,4 @@
-package com.codefactory.fleetguard360.controller.DTO;
+package com.codefactory.fleetguard360.controller.dto;
 
 public class AuthDTO {
     public static class LoginRequest {
@@ -24,7 +24,13 @@ public class AuthDTO {
 
     public static class TokenResponse {
         private String token;
-        public TokenResponse(String token) { this.token = token; }
-        public String getToken() { return token; }
+
+        public TokenResponse(String token) {
+            this.token = token;
+        }
+
+        public String getToken() {
+            return token;
+        }
     }
 }
