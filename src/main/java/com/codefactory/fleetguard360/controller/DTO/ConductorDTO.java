@@ -1,5 +1,9 @@
 package com.codefactory.fleetguard360.controller.DTO;
 
+import lombok.Data;
+import java.util.regex.Pattern;
+
+@Data
 public class ConductorDTO {
     private int id;
     private String nombre;
@@ -7,41 +11,13 @@ public class ConductorDTO {
     private String telefono;
     private String email;
     private String password;
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getDocumentoIdentidad() {
-        return documentoIdentidad;
-    }
-    public void setDocumentoIdentidad(String documentoIdentidad) {
-        this.documentoIdentidad = documentoIdentidad;
-    }
-    public String getTelefono() {
-        return telefono;
-    }
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-    public String getEmail() {
-        return email;
-    }
+
     public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+        // Validación simple de email
+        if (email != null && Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email)) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("Email inválido");
+        }
     }
 }
-
