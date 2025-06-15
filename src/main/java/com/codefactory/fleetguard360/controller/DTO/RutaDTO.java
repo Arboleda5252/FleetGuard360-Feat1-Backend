@@ -2,7 +2,6 @@ package com.codefactory.fleetguard360.controller.DTO;
 public class RutaDTO {
     public int id;
 
-
     public String nombre;
     public String origen;
     public String destino;
