@@ -1,4 +1,5 @@
-package com.codefactory.fleetguard360.controller.DTO;
+
+package com.codefactory.fleetguard360.controller.dto;  // Cambié DTO por dto
 
 public class ConductorDTO {
     private int id;
