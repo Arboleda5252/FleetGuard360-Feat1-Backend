@@ -1,13 +1,13 @@
-package com.codefactory.fleetguard360.controller.DTO;
+package com.codefactory.fleetguard360.controller.dto; // Renombrado el paquete
 
 import java.util.Date;
 
 public class TurnoDTO {
-    public Date inicio;
-    public Date fin;
-    public String estado;
-    public int conductorId;
-    public Integer rutaId;
+    private Date inicio;
+    private Date fin;
+    private String estado;
+    private int conductorId;
+    private Integer rutaId;
 
     public Date getInicio() {
         return inicio;
