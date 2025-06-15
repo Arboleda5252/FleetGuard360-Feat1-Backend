@@ -13,8 +13,13 @@ import java.util.List;
 @RequestMapping("/api/rutas")
 public class RutaController {
 
+    private final RutaService rutaService;
+
+    // Constructor para la inyección de dependencias
     @Autowired
-    private RutaService rutaService;
+    public RutaController(RutaService rutaService) {
+        this.rutaService = rutaService;
+    }
 
     @PostMapping
     public ResponseEntity<Ruta> crear(@RequestBody RutaDTO dto) {
