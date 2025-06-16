@@ -5,7 +5,6 @@ public class AuthDTO {
     private AuthDTO() {
         // Constructor vacío, no realiza ninguna acción
     }
-
     public static class LoginRequest {
         private String correo;
         private String password;
