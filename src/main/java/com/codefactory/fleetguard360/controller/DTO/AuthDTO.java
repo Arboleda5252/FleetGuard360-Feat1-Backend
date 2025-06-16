@@ -1,4 +1,4 @@
-package com.codefactory.fleetguard360.controller.dto;
+package com.codefactory.fleetguard360.controller.DTO;
 
 public class AuthDTO {
     // Constructor privado para evitar la creación de instancias de AuthDTO
