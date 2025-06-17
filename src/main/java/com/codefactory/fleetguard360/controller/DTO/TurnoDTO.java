@@ -1,12 +1,14 @@
 package com.codefactory.fleetguard360.controller.DTO;
 
 import java.util.Date;
+
 public class TurnoDTO {
-    public Date inicio;
-    public Date fin;
-    public String estado;
-    public int conductorId;
-    public Integer rutaId;
+    private Date inicio;
+    private Date fin;
+    private String estado;
+    private int conductorId;
+    private Integer rutaId;  // Changed from public to private
+
     public Date getInicio() {
         return inicio;
     }
@@ -38,3 +40,4 @@ public class TurnoDTO {
         this.rutaId = rutaId;
     }
 }
+
