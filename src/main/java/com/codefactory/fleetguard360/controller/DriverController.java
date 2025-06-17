@@ -1,4 +1,5 @@
 package com.codefactory.fleetguard360.controller;
 
-public class DriverController {
+public interface DriverController {
+    String obtenerInfoDriver(int id);
 }
