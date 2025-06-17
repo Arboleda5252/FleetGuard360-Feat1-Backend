@@ -1,4 +1,5 @@
 package com.codefactory.fleetguard360.controller;
 
-public class NotificationController {
+public interface NotificationController {
+    String listarNotificaciones();
 }
