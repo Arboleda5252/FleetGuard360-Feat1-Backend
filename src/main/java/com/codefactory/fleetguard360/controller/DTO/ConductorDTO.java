@@ -14,25 +14,38 @@ public class ConductorDTO {
     private String password;
     private String email;
 
-    // Compile the pattern once (and stay safe from repeated compilation and backtracking)
+    private static final int MAX_EMAIL_LENGTH = 254;
+    // Compile the pattern once (and avoid repeated compilation/backtracking issues)
     private static final Pattern EMAIL_PATTERN =
             Pattern.compile("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 
-    // Custom setter for email that reuses the static pattern and adds an early length check:
+    /**
+     * Sets the email after validating it. Uses a centralized validation method.
+     *
+     * @param email The email to set.
+     * @throws IllegalArgumentException if the email is invalid.
+     */
     public void setEmail(String email) {
-        if (isValidEmail(email)) {
-            this.email = email;
-        } else {
-            throw new IllegalArgumentException("Email inválido");
-        }
+        this.email = validateEmail(email);
     }
 
-    // Private helper method to encapsulate email validation logic.
-    private boolean isValidEmail(String email) {
-        // Quick check to avoid pathological cases: limit input length.
-        if (email == null || email.length() > 254) {
-            return false;
+    /**
+     * Validates the provided email.
+     *
+     * Performs an early check on the email's length to avoid potential
+     * stack overflow issues from catastrophic backtracking with large inputs.
+     *
+     * @param email The email to be validated.
+     * @return the email if valid.
+     * @throws IllegalArgumentException if the email is null, too long, or does not match the pattern.
+     */
+    private static String validateEmail(String email) {
+        if (email == null || email.length() > MAX_EMAIL_LENGTH) {
+            throw new IllegalArgumentException("Email inválido");
         }
-        return EMAIL_PATTERN.matcher(email).matches();
+        if (!EMAIL_PATTERN.matcher(email).matches()) {
+            throw new IllegalArgumentException("Email inválido");
+        }
+        return email;
     }
 }
