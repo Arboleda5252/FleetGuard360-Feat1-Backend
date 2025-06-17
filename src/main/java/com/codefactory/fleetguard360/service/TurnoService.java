@@ -9,26 +9,25 @@ import com.codefactory.fleetguard360.repository.TurnoRepository;
 import com.codefactory.fleetguard360.repository.entities.Conductor;
 import com.codefactory.fleetguard360.repository.entities.Ruta;
 import com.codefactory.fleetguard360.repository.entities.Turno;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TurnoService {
 
-    @Autowired
-    private TurnoRepository turnoRepository;
+    private final TurnoRepository turnoRepository;
+    private final ConductorRepository conductorRepository;
+    private final RutaRepository rutaRepository;
+    private final TurnoMapper turnoMapper;
 
-    @Autowired
-    private ConductorRepository conductorRepository;
-
-    @Autowired
-    private RutaRepository rutaRepository;
-
-    @Autowired
-    private TurnoMapper turnoMapper;
-
+    public TurnoService(TurnoRepository turnoRepository,
+                        ConductorRepository conductorRepository,
+                        RutaRepository rutaRepository,
+                        TurnoMapper turnoMapper) {
+        this.turnoRepository = turnoRepository;
+        this.conductorRepository = conductorRepository;
+        this.rutaRepository = rutaRepository;
+        this.turnoMapper = turnoMapper;
+    }
 
     public TurnoResponseDTO crearTurno(TurnoDTO dto) {
         Conductor conductor = conductorRepository.findById(dto.conductorId)
@@ -45,7 +44,6 @@ public class TurnoService {
         turno.setRuta(ruta);
 
         Turno turnoGuardado = turnoRepository.save(turno);
-
         return turnoMapper.turnoToTurnoResponseDTO(turnoGuardado);
     }
 }
