@@ -1,4 +1,4 @@
-package com.codefactory.fleetguard360.controller.DTO;
+package com.codefactory.fleetguard360.controller.dto;
 
 import java.util.Date;
 
@@ -58,5 +58,3 @@ public class TurnoResponseDTO {
         this.ruta = ruta;
     }
 }
-
-
