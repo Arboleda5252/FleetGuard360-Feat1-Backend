@@ -13,6 +13,10 @@ public class ConductorDTO {
     private String password;
     private String email;
 
+    // Compile and store the pattern once to reuse in the setter.
+    private static final Pattern EMAIL_PATTERN =
+            Pattern.compile("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+
     public void setId(int id) {
         this.id = id;
     }
@@ -33,9 +37,8 @@ public class ConductorDTO {
         this.password = password;
     }
 
-    // Custom setter with validation
     public void setEmail(String email) {
-        if (email != null && Pattern.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email)) {
+        if (email != null && EMAIL_PATTERN.matcher(email).matches()) {
             this.email = email;
         } else {
             throw new IllegalArgumentException("Email inválido");
