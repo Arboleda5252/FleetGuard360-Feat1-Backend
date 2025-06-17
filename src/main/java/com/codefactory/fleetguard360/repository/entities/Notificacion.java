@@ -1,12 +1,11 @@
 package com.codefactory.fleetguard360.repository.entities;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Notificacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,10 +14,6 @@ public class Notificacion {
     private String mensaje;
     private Date fecha;
     private boolean leida;
-
-    /*@OneToMany
-    @JoinColumn(name = "turno_id", nullable = false)
-    private List<Turno> turno;*/
 
     public int getId() {
         return id;
@@ -59,12 +54,4 @@ public class Notificacion {
     public void setLeida(boolean leida) {
         this.leida = leida;
     }
-
-    /*public List<Turno> getTurno() {
-        return turno;
-    }
-
-    public void setTurno(List<Turno> turno) {
-        this.turno = turno;
-    }*/
 }
