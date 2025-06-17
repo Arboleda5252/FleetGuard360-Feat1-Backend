@@ -1,4 +1,5 @@
 package com.codefactory.fleetguard360.controller;
 
-public class ReportController {
+public interface ReportController {
+    String reporteDiario();
 }
