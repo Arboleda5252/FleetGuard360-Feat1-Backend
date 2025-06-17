@@ -3,7 +3,6 @@ package com.codefactory.fleetguard360.service;
 import com.codefactory.fleetguard360.controller.DTO.RutaDTO;
 import com.codefactory.fleetguard360.repository.RutaRepository;
 import com.codefactory.fleetguard360.repository.entities.Ruta;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,12 @@ import java.util.List;
 @Service
 public class RutaService {
 
-    @Autowired
-    private RutaRepository rutaRepository;
+    private final RutaRepository rutaRepository;
+
+    // Constructor con inyección
+    public RutaService(RutaRepository rutaRepository) {
+        this.rutaRepository = rutaRepository;
+    }
 
     public Ruta crearRuta(RutaDTO dto) {
         Ruta ruta = new Ruta();
@@ -25,7 +28,6 @@ public class RutaService {
     public Ruta actualizarRuta(int id, RutaDTO dto) {
         Ruta ruta = rutaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Ruta no encontrada"));
-
         ruta.setNombre(dto.nombre);
         ruta.setOrigen(dto.origen);
         ruta.setDestino(dto.destino);
